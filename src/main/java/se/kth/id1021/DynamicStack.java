@@ -8,7 +8,7 @@ public class DynamicStack extends Stack {
     private int stackPointer = -1;  //pointing to the position of current item.
 
     public void push(int i) {
-        if(stackPointer > length-1){
+        if(stackPointer > length-2){
             expandAndCopy();
         }
 
