@@ -3,13 +3,20 @@ package se.kth.id1021;
 public class DynamicStack extends Stack {
     public class StackEmptyException extends RuntimeException {}
 
-    private final int MINIMUM_LENGTH = 10;
-    private int length = MINIMUM_LENGTH;
-    private int[] valueStack = new int[length];
-    private int stackPointer = -1;  //pointing to the position of current item.
+    private final int MINIMUM_SIZE;
+    private int size;
+    private int[] valueStack;
+    private int stackPointer;  //pointing to the position of current item.
+
+    public DynamicStack(int initialSize){
+        this.MINIMUM_SIZE = initialSize;
+        this.size = initialSize;
+        this.valueStack = new int[size];
+        this.stackPointer = -1;
+    }
 
     public void push(int i) {
-        if(stackPointer > length-2){
+        if(stackPointer > size-2){
             expandAndCopy();
         }
 
@@ -18,13 +25,13 @@ public class DynamicStack extends Stack {
     }
 
     private void expandAndCopy(){
-        int[] expandedValueStack = new int[2*length];
+        int[] expandedValueStack = new int[2*size];
 
-        for(int i = 0;i<length;i++){
+        for(int i = 0;i<size;i++){
             expandedValueStack[i]=valueStack[i];
         }
         this.valueStack = expandedValueStack;
-        this.length = this.length*2;
+        this.size = this.size*2;
     }
 
     public int pop() {
@@ -32,7 +39,7 @@ public class DynamicStack extends Stack {
             throw new StackEmptyException();
         }
         
-        if(stackPointer <= length/4 && length >= MINIMUM_LENGTH){
+        if(stackPointer <= size/4 && size >= MINIMUM_SIZE){
             shrinkAndCopy();
         }
 
@@ -42,13 +49,13 @@ public class DynamicStack extends Stack {
     }
     
     private void shrinkAndCopy(){
-        int[] shrinkValueStack = new int[length/2];
+        int[] shrinkValueStack = new int[size/2];
 
-        for(int i = 0;i<length/2;i++){
+        for(int i = 0;i<size/2;i++){
             shrinkValueStack[i]=valueStack[i];
         }
         this.valueStack = shrinkValueStack;
-        this.length = this.length/2;
+        this.size = this.size/2;
     }
 
 }

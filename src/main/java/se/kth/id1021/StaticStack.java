@@ -4,12 +4,18 @@ public class StaticStack extends Stack {
     public class StackFullException extends RuntimeException {}
     public class StackEmptyException extends RuntimeException {}
 
-    private final int LENGTH = 10;
-    private int[] valueStack = new int[LENGTH];
-    private int stackPointer = -1;  //pointing to the position of current item.
+    private int size;
+    private int[] valueStack;
+    private int stackPointer;  //pointing to the position of current item.
+
+    public StaticStack(int initialSize){
+        this.size = initialSize;
+        this.valueStack = new int[size];
+        this.stackPointer = -1;
+    }
 
     public void push(int i) {
-        if(stackPointer > LENGTH-2){
+        if(stackPointer > size-2){
             throw new StackFullException();
         }
 

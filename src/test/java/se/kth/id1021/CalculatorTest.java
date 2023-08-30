@@ -19,7 +19,7 @@ public class CalculatorTest extends TestCase
             new Item(Item.ItemType.ADD),
         };
 
-        Calculator calc = new Calculator(expr, true);
+        Calculator calc = new Calculator(expr, true, 10);
         int actual = calc.run();
         assertEquals("Check if 10*2+5 is equal to 20", 20, actual);
     }
@@ -34,7 +34,7 @@ public class CalculatorTest extends TestCase
             new Item(Item.ItemType.MUL),
         };
 
-        Calculator calc = new Calculator(expr, true);
+        Calculator calc = new Calculator(expr, true, 10);
         int actual = calc.run();
         assertEquals("Check if (4+5)*6 is equal to 54", 54, actual);
     }
@@ -76,7 +76,7 @@ public class CalculatorTest extends TestCase
             new Item(Item.ItemType.ADD),
         };
 
-        Calculator calc = new Calculator(expr, false);
+        Calculator calc = new Calculator(expr, false, 10);
         int actual = calc.run();
         assertEquals("Check if ((16+15)*14+13)*12... is equal to ", 20643839, actual);
     }

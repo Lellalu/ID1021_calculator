@@ -6,13 +6,13 @@ public class Calculator {
     int ip;
     Stack stack;
 
-    public Calculator(Item[] expr, boolean useStaticStack){
+    public Calculator(Item[] expr, boolean useStaticStack, int stackInitialSize){
         this.expr = expr;
         this.ip = 0;
         if (useStaticStack) {
-            this.stack = new StaticStack();
+            this.stack = new StaticStack(stackInitialSize);
         }else{
-            this.stack = new DynamicStack();
+            this.stack = new DynamicStack(stackInitialSize);
         }
     }
 
