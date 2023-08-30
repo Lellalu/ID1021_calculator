@@ -44,32 +44,40 @@ public class CalculatorTest extends TestCase
         // 1+1 twelve times to test expand dynamic stack.
         Item[] expr = {
             new Item(Item.ItemType.VALUE, 1),
-            new Item(Item.ItemType.VALUE, 1),
-            new Item(Item.ItemType.VALUE, 1),
-            new Item(Item.ItemType.VALUE, 1),
-            new Item(Item.ItemType.VALUE, 1),
-            new Item(Item.ItemType.VALUE, 1),
-            new Item(Item.ItemType.VALUE, 1),
-            new Item(Item.ItemType.VALUE, 1),
-            new Item(Item.ItemType.VALUE, 1),
-            new Item(Item.ItemType.VALUE, 1),
-            new Item(Item.ItemType.VALUE, 1),
-            new Item(Item.ItemType.VALUE, 1),
+            new Item(Item.ItemType.VALUE, 2),
+            new Item(Item.ItemType.VALUE, 3),
+            new Item(Item.ItemType.VALUE, 4),
+            new Item(Item.ItemType.VALUE, 5),
+            new Item(Item.ItemType.VALUE, 6),
+            new Item(Item.ItemType.VALUE, 7),
+            new Item(Item.ItemType.VALUE, 8),
+            new Item(Item.ItemType.VALUE, 9),
+            new Item(Item.ItemType.VALUE, 10),
+            new Item(Item.ItemType.VALUE, 11),
+            new Item(Item.ItemType.VALUE, 12),
+            new Item(Item.ItemType.VALUE, 13),
+            new Item(Item.ItemType.VALUE, 14),
+            new Item(Item.ItemType.VALUE, 15),
+            new Item(Item.ItemType.VALUE, 16),
             new Item(Item.ItemType.ADD),
+            new Item(Item.ItemType.MUL),
             new Item(Item.ItemType.ADD),
+            new Item(Item.ItemType.MUL),
             new Item(Item.ItemType.ADD),
+            new Item(Item.ItemType.MUL),
             new Item(Item.ItemType.ADD),
+            new Item(Item.ItemType.MUL),
             new Item(Item.ItemType.ADD),
+            new Item(Item.ItemType.MUL),
             new Item(Item.ItemType.ADD),
+            new Item(Item.ItemType.MUL),
             new Item(Item.ItemType.ADD),
-            new Item(Item.ItemType.ADD),
-            new Item(Item.ItemType.ADD),
-            new Item(Item.ItemType.ADD),
+            new Item(Item.ItemType.MUL),
             new Item(Item.ItemType.ADD),
         };
 
         Calculator calc = new Calculator(expr, false);
         int actual = calc.run();
-        assertEquals("Check if (1+1+1+1+1+1+1+1+1+1+1+1) is equal to 12", 12, actual);
+        assertEquals("Check if ((16+15)*14+13)*12... is equal to ", 20643839, actual);
     }
 }
