@@ -9,7 +9,7 @@ public class StaticStack extends Stack {
     private int stackPointer = -1;  //pointing to the position of current item.
 
     public void push(int i) {
-        if(stackPointer > LENGTH-1){
+        if(stackPointer > LENGTH-2){
             throw new StackFullException();
         }
 

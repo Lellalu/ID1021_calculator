@@ -6,10 +6,14 @@ public class Calculator {
     int ip;
     Stack stack;
 
-    public Calculator(Item[] expr){
+    public Calculator(Item[] expr, boolean useStaticStack){
         this.expr = expr;
         this.ip = 0;
-        this.stack = new DynamicStack();
+        if (useStaticStack) {
+            this.stack = new StaticStack();
+        }else{
+            this.stack = new DynamicStack();
+        }
     }
 
     public int run(){

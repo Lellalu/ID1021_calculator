@@ -3,7 +3,8 @@ package se.kth.id1021;
 public class DynamicStack extends Stack {
     public class StackEmptyException extends RuntimeException {}
 
-    private int length = 10;
+    private final int MINIMUM_LENGTH = 10;
+    private int length = MINIMUM_LENGTH;
     private int[] valueStack = new int[length];
     private int stackPointer = -1;  //pointing to the position of current item.
 
@@ -30,11 +31,24 @@ public class DynamicStack extends Stack {
         if(stackPointer == -1){
             throw new StackEmptyException();
         }
+        
+        if(stackPointer <= length/4 && length >= MINIMUM_LENGTH){
+            shrinkAndCopy();
+        }
 
         int value = valueStack[stackPointer];
         stackPointer--;
         return value;
     }
     
+    private void shrinkAndCopy(){
+        int[] shrinkValueStack = new int[length/2];
+
+        for(int i = 0;i<length/2;i++){
+            shrinkValueStack[i]=valueStack[i];
+        }
+        this.valueStack = shrinkValueStack;
+        this.length = this.length/2;
+    }
 
 }

@@ -7,7 +7,7 @@ public class Main{
             new Item(Item.ItemType.ADD),
         };
 
-        Calculator calc = new Calculator(expr);
+        Calculator calc = new Calculator(expr, false);
         int res = calc.run();
         System.out.println("Calculator:res=" + res);
     }
