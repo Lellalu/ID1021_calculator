@@ -1,6 +1,9 @@
 package se.kth.id1021;
 
-
+/**
+ * The startup Main class to start up initializations of the static and dynamic 
+ * stacks, and to set up a benchmark that tries to estimate the cost of using either stacks.
+ */
 public class Main{
     public static void main(String[] args) {
 
